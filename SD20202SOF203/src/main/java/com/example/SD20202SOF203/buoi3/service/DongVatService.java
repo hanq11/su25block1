@@ -40,7 +40,7 @@ public class DongVatService {
         danhSach.remove(viTriCanXoa);
     }
 
-    public DongVat detail(Integer id) {
+    public DongVat chiTiet(Integer id) {
         for(DongVat dv: danhSach) {
             if(dv.getId() == id) {
                 return dv;
