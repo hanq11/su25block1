@@ -6,6 +6,8 @@ package com.poly.sd20304.dao.impl;
 
 import com.poly.sd20304.dao.CategoryDAO;
 import com.poly.sd20304.entity.Category;
+import com.poly.sd20304.util.XJdbc;
+import com.poly.sd20304.util.XQuery;
 import java.util.List;
 
 /**
@@ -22,27 +24,44 @@ public class CategoryDAOImpl implements CategoryDAO {
     
     @Override
     public Category create(Category entity) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Object[] values = {
+            entity.getId(),
+            entity.getName()
+        };
+        XJdbc.executeUpdate(createSql, values);
+        return entity;
     }
 
     @Override
     public void update(Category entity) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Object[] values = {
+            entity.getName(),
+            entity.getId()
+        };
+        XJdbc.executeUpdate(updateSql, values);
     }
 
     @Override
     public void deleteById(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        XJdbc.executeUpdate(deleteSql, id);
     }
 
     @Override
     public List<Category> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return XQuery.getBeanList(Category.class, findAllSql);
     }
 
     @Override
     public Category findById(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return XQuery.getSingleBean(Category.class, findByIdSql, id);
     }
     
+    public static void main(String[] args) {
+        CategoryDAO dao = new CategoryDAOImpl();
+//        dao.create(new Category("3", "Nuoc giai khat"));
+//        dao.update(new Category("3", "Nuoc uong"));
+//        dao.deleteById("3");
+        dao.findAll().forEach(cate -> System.out.println(cate));
+        System.out.println("Test findById: " + dao.findById("C01"));
+    }
 }
