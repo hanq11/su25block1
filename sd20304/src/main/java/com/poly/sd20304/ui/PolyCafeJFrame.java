@@ -42,7 +42,8 @@ public class PolyCafeJFrame extends javax.swing.JFrame implements PolyCafeContro
         btnExit = new javax.swing.JButton();
         btnHistory = new javax.swing.JButton();
         btnChangePassword = new javax.swing.JButton();
-        btnDrinkManager = new javax.swing.JButton();
+        btnCategoryManager = new javax.swing.JButton();
+        btnDrinkManager1 = new javax.swing.JButton();
         backgroundImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,14 +67,35 @@ public class PolyCafeJFrame extends javax.swing.JFrame implements PolyCafeContro
         btnChangePassword.setText("Đổi mật khẩu");
         getContentPane().add(btnChangePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 317, -1, -1));
 
-        btnDrinkManager.setText("Đồ uống");
-        getContentPane().add(btnDrinkManager, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, -1, -1));
+        btnCategoryManager.setText("Loại đồ uống");
+        btnCategoryManager.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCategoryManagerActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCategoryManager, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, -1, -1));
+
+        btnDrinkManager1.setText("Đồ uống");
+        btnDrinkManager1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDrinkManager1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDrinkManager1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, -1, -1));
 
         backgroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poly/cafe/icons/coffee-shop.jpg"))); // NOI18N
         getContentPane().add(backgroundImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDrinkManager1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDrinkManager1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDrinkManager1ActionPerformed
+
+    private void btnCategoryManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoryManagerActionPerformed
+        showCategoryJDialog(this);
+    }//GEN-LAST:event_btnCategoryManagerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -112,8 +134,9 @@ public class PolyCafeJFrame extends javax.swing.JFrame implements PolyCafeContro
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundImage;
+    private javax.swing.JButton btnCategoryManager;
     private javax.swing.JButton btnChangePassword;
-    private javax.swing.JButton btnDrinkManager;
+    private javax.swing.JButton btnDrinkManager1;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnHistory;
     private javax.swing.JButton btnSales;

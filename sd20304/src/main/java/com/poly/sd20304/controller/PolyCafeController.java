@@ -5,6 +5,7 @@
 package com.poly.sd20304.controller;
 
 import com.poly.sd20304.ui.WelcomeJDialog;
+import com.poly.sd20304.ui.manager.CategoryManagerJDialog;
 import com.poly.sd20304.util.XDialog;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -29,4 +30,7 @@ public interface PolyCafeController {
         this.showJDialog(new WelcomeJDialog(frame, true));
     }
     
+    default void showCategoryJDialog(JFrame frame){
+        this.showJDialog(new CategoryManagerJDialog(frame, true));
+    }
 }
