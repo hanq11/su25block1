@@ -13,7 +13,9 @@ import java.io.IOException;
 @WebServlet(name = "DongVatController", value = {
         "/buoi3/hien-thi", //GET
         "/buoi3/them", //POST
-        "/buoi3/sua" //GET, POST
+        "/buoi3/sua", //GET, POST
+        "/buoi3/chi-tiet", //GET
+        "/buoi3/xoa" // GET
 })
 public class DongVatController extends HttpServlet {
     DongVatService dongVatService = new DongVatService();
@@ -25,7 +27,24 @@ public class DongVatController extends HttpServlet {
             hienThi(req, resp);
         } else if(uri.contains("sua")) {
             viewUpdate(req, resp);
+        } else if(uri.contains("chi-tiet")) {
+            chiTiet(req, resp);
+        } else if(uri.contains("xoa")) {
+            xoa(req, resp);
         }
+    }
+
+    private void xoa(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        Integer id = Integer.valueOf(req.getParameter("id"));
+        dongVatService.xoa(id);
+        resp.sendRedirect("/buoi3/hien-thi");
+    }
+
+    private void chiTiet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Integer id = Integer.valueOf(req.getParameter("id"));
+        DongVat dv = dongVatService.chiTiet(id);
+        req.setAttribute("dongVat", dv);
+        req.getRequestDispatcher("/views/buoi3/chi-tiet.jsp").forward(req, resp);
     }
 
     private void viewUpdate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
