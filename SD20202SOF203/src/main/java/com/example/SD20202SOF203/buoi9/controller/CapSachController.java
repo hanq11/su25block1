@@ -14,7 +14,8 @@ import java.io.IOException;
         "/buoi9/hien-thi", //GET
         "/buoi9/view-update", // GET
         "/buoi9/them", //POST
-        "/buoi9/update" // POST
+        "/buoi9/update", // POST
+        "/buoi9/xoa" // GET
 })
 public class CapSachController extends HttpServlet {
     CapSachRepository capSachRepository = new CapSachRepository();
@@ -25,7 +26,15 @@ public class CapSachController extends HttpServlet {
             hienThi(req, resp);
         } else if(uri.contains("view-update")) {
             viewUpdate(req, resp);
+        } else if(uri.contains("xoa")) {
+            xoa(req, resp);
         }
+    }
+
+    private void xoa(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        Integer id = Integer.valueOf(req.getParameter("id"));
+        capSachRepository.xoa(id);
+        resp.sendRedirect("/buoi9/hien-thi");
     }
 
     private void viewUpdate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

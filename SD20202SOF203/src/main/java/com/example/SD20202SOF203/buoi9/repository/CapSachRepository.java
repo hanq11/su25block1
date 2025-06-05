@@ -89,4 +89,14 @@ public class CapSachRepository {
         return null;
     }
 
+    public void xoa(Integer id) {
+        String sql = "DELETE FROM CapSach WHERE id = ?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
