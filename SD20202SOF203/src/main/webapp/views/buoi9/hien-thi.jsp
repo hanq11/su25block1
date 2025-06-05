@@ -12,11 +12,21 @@
     <title>Title</title>
 </head>
 <body>
+    <h2>Them cap sach</h2>
+    <form action="/buoi9/them" method="post">
+        Id: <input type="text" name="id"> <br>
+        Ten: <input type="text" name="ten"> <br>
+        Gia: <input type="text" name="gia"> <br>
+        Chong nuoc: <input type="radio" name="chongNuoc" value="true"> Co
+        <input type="radio" name="chongNuoc" value="false"> Khong <br>
+        <button>Submit</button>
+    </form>
+
     <h2>Thong tin</h2>
 <table>
     <thead>
         <tr>
-            <th>Ma</th>
+            <th>Id</th>
             <th>Ten</th>
             <th>Gia</th>
             <th>Chong nuoc</th>
@@ -30,7 +40,10 @@
                 <td>${capSach.ten}</td>
                 <td>${capSach.gia}</td>
                 <td>${capSach.chongNuoc ? "Co" : "Khong"}</td>
-                <td></td>
+                <td>
+                    <a href="/buoi9/view-update?id=${capSach.id}">View update</a>
+                    <a href="/buoi9/xoa?id=${capSach.id}">Xoa</a>
+                </td>
             </tr>
         </c:forEach>
     </tbody>
