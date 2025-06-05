@@ -58,9 +58,11 @@ public class QuanLyTruongHoc extends javax.swing.JFrame {
      
         Integer idTinhThanh = null;
         
-        for(TinhThanh th: tinhThanhRepository.getAll()) {
-            if(th.getTen().equals(cboTinhThanh.getSelectedItem().toString())) {
-                idTinhThanh = th.getId();
+        List<TinhThanh> danhSach = tinhThanhRepository.getAll();
+        
+        for(TinhThanh tt: danhSach) {
+            if(tt.getTen().equals(cboTinhThanh.getSelectedItem().toString())) {
+                idTinhThanh = tt.getId();
             }
         }
         
